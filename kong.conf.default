@@ -926,6 +926,13 @@
                                         # connection may be kept open
                                         # indefinitely.
 
+#debug_header = off  # Enable the `kong-debug` header function
+                     # if it is `on`, kong will add debug header
+                     # `Kong-Route-Id` `Kong-Route-Name` `Kong-Service-Id` 
+                     # `Kong-Service-Name` when client request 
+                     # header `kong-debug = 1` is set
+                     # default is `off`
+
 #------------------------------------------------------------------------------
 # NGINX injected directives
 #------------------------------------------------------------------------------
@@ -1023,6 +1030,15 @@
 
 #nginx_admin_client_max_body_size = 10m  # Defines the maximum request body size for
                                          # Admin API.
+
+#nginx_http_charset = UTF-8  # Adds the specified charset to the “Content-Type”
+                             # response header field. If this charset is different
+                             # from the charset specified in the source_charset
+                             # directive, a conversion is performed.
+                             #
+                             # The parameter `off` cancels the addition of
+                             # charset to the “Content-Type” response header field.
+                             # See http://nginx.org/en/docs/http/ngx_http_charset_module.html#charset
 
 #nginx_http_client_body_buffer_size = 8k  # Defines the buffer size for reading
                                           # the request body. If the client

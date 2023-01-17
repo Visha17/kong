@@ -58,6 +58,7 @@ error_default_type = text/plain
 upstream_keepalive_pool_size = 60
 upstream_keepalive_max_requests = 100
 upstream_keepalive_idle_timeout = 60
+debug_header = off
 
 nginx_user = kong kong
 nginx_worker_processes = auto
@@ -68,6 +69,7 @@ nginx_main_worker_processes = auto
 nginx_main_worker_rlimit_nofile = auto
 nginx_events_worker_connections = auto
 nginx_events_multi_accept = on
+nginx_http_charset = UTF-8
 nginx_http_client_max_body_size = 0
 nginx_http_client_body_buffer_size = 8k
 nginx_http_ssl_protocols = NONE

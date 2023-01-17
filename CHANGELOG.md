@@ -84,6 +84,9 @@
   Expression router instead of the traditional router to ensure created routes
   are actually compatible.
   [#9987](https://github.com/Kong/kong/pull/9987)
+- Nginx charset directive can now be configured with Nginx directive injections
+  [#10111](https://github.com/Kong/kong/pull/10111)
+
 
 #### Plugins
 
@@ -96,6 +99,8 @@
   parameter that allows the selection of the IMDS protocol version.
   Defaults to `v1`, can be set to `v2` to enable IMDSv2.
   [#9962](https://github.com/Kong/kong/pull/9962)
+- **OpenTelemetry**: Support scoping with services, routes and consumers.
+  [#10096](https://github.com/Kong/kong/pull/10096)
 
 ### Fixes
 
@@ -105,8 +110,6 @@
   [#9960](https://github.com/Kong/kong/pull/9960)
 - Expose postgres connection pool configuration
   [#9603](https://github.com/Kong/kong/pull/9603)
-- **Template**: Do not add default charset to the `Content-Type` response header when upstream response doesn't contain it.
-  [#9905](https://github.com/Kong/kong/pull/9905)
 - Fix an issue where after a valid declarative configuration is loaded,
   the configuration hash is incorrectly set to the value: `00000000000000000000000000000000`.
   [#9911](https://github.com/Kong/kong/pull/9911)
@@ -116,6 +119,8 @@
   [#10046](https://github.com/Kong/kong/pull/10046)
 - Fix an issue where 'X-Kong-Upstream-Status' cannot be emitted when response is buffered.
   [#10056](https://github.com/Kong/kong/pull/10056)
+- tls protocol upstream support upstream tls config
+  [#9947](https://github.com/Kong/kong/pull/9947)
 
 #### Plugins
 
@@ -158,6 +163,8 @@
   to `Method not allowed`, make the reponse to show more clearly that Kong do not support
   TRACE method.
   [#9448](https://github.com/Kong/kong/pull/9448)
+- Add debug_header kong conf to disable kong_debug header function, default set to off
+  [#10054](https://github.com/Kong/kong/pull/10054)
 
 
 ### Additions
