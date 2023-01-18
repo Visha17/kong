@@ -21,6 +21,10 @@ describe("Admin API - Kong debug route with strategy #" .. strategy, function()
       paths         = { "/" },
       service       = service_mockbin,
     })
+    assert(bp.plugins:insert {
+      name = "datadog",
+      service = service_mockbin,
+    })
 
     assert(helpers.start_kong {
       database = strategy,
@@ -142,6 +146,8 @@ describe("Admin API - Kong debug route with strategy #" .. strategy, function()
       assert.logfile().has.no.line("upstream SSL certificate verify error: " ..
       "(20:unable to get local issuer certificate) " ..
       "while SSL handshaking to upstream", true, 2)
+      -- from timers pre-created by timer-ng
+      assert.logfile().has.no.line("failed to send data to", true, 2)
 
       -- go back to default (debug)
       res = assert(helpers.admin_client():send {
@@ -179,6 +185,8 @@ describe("Admin API - Kong debug route with strategy #" .. strategy, function()
       assert.logfile().has.line("upstream SSL certificate verify error: " ..
       "(20:unable to get local issuer certificate) " ..
       "while SSL handshaking to upstream", true, 30)
+      -- from timers pre-created by timer-ng
+      assert.logfile().has.line("failed to send data to", true, 30)
     end)
 
     it("changes log level for traditional mode", function()

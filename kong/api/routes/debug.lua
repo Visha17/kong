@@ -64,6 +64,9 @@ local function handle_put_log_level(self, broadcast)
     return kong.response.exit(500, { message = message })
   end
 
+  -- store in global _G table for timers pre-created by timer-ng
+  _G.log_level = log_level
+
   return kong.response.exit(200, { message = "log level changed" })
 end
 
